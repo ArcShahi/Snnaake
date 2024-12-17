@@ -1,3 +1,4 @@
+
 #ifndef RANDUM_HPP
 #define RANDUM_HPP
 
@@ -5,12 +6,10 @@
 
 
 inline std::random_device rd{};
-
 inline std::seed_seq ss{ rd(),rd(),rd(),rd(),rd(),rd(),rd() };
-
 static std::mt19937 mt{ ss };
 
-namespace arc
+namespace xe
 {
 
 
@@ -27,6 +26,13 @@ namespace arc
 		return range(mt);
 	}
 
+	inline double randomd(double min = 0.0, double max = 9.9)
+	{
+		std::uniform_real_distribution<double> range(min, max);
+		return range(mt);
+	}
+
+	[[deprecated("Use xe::randomi(65,90) instead")]]
 	inline char randomc()
 	{
 		static const char alpha[]{ "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ" };
@@ -37,3 +43,4 @@ namespace arc
 
 }
 #endif // !RANDUM_HPP
+
